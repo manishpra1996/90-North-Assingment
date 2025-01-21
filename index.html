@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Webpage</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body setup */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            background-color: aquamarine;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Navbar styling */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #3ef132;
+            color: rgb(24, 4, 244);
+            padding: 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        nav a {
+            color: rgb(29, 0, 245);
+            text-decoration: none;
+            margin: 0 50px;
+        }
+
+        /* Main container */
+        .container {
+            display: flex;
+            margin-top: 60px; /* Space for fixed navbar */
+            flex-grow: 1;
+            padding: 20px;
+            height: calc(100vh - 120px); /* Adjust height */
+        }
+
+        /* Left menu styling */
+        .left-menu {
+            width: 250px;
+            background-color: #ffb0b0;
+            padding: 20px;
+            transition: width 0.3s ease;
+        }
+
+        .left-menu.collapsed {
+            width: 0;
+            padding: 0;
+        }
+
+        .left-menu a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 0;
+        }
+
+        /* Main content area styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        /* Right panel styling */
+        .right-panel {
+            width: 250px;
+            background-color: #f59292;
+            padding: 20px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #9df272;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Toggle button for left menu */
+        .toggle-btn {
+            display: none;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-menu, .right-panel {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .toggle-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navbar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Main container -->
+    <div class="container">
+
+        <!-- Left menu (collapsible) -->
+        <div class="left-menu">
+            <button class="toggle-btn" onclick="toggleMenu()">☰ Toggle Menu</button>
+            <a href="#"><h3>Left Menu</h3></a>
+            <a href="#"><h4>Activity1</h4></a>
+            <a href="#"><h4>Activity2</h4></a>
+            <a href="#"><h4>Activity3</h4></a>
+            <a href="#"><h4>Activity4</h4></a>
+            <a href="#"><h4>Activity5</h4></a>
+            <a href="#"><h4>Activity6</h4></a>
+            <a href="#"><h4>Activity7</h4></a>
+            <a href="#"><h4>Activity8</h4></a>
+            <a href="#"><h4>Activity9</h4></a>
+            <a href="#"><h4>Activity10</h4></a>
+        </div>
+
+        <!-- Main content area -->
+        <div class="main-content">
+            <h1>Main Content</h1>
+            <p>
+                90 North is a real estate investment manager with a global perspective, 
+                working with investors to expand and manage their international portfolio.
+            </p>
+        </div>
+
+        <!-- Right panel -->
+        <div class="right-panel">
+            <h3>Right Panel</h3>
+            <p>This is the right panel.
+                we can use for our purpose.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Responsive Webpage. All rights reserved.</p>
+                <p>
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle left menu (collapsible)
+        function toggleMenu() {
+            const menu = document.querySelector('.left-menu');
+            menu.classList.toggle('collapsed');
+        }
+        function adjustPageScale() {
+            const width = window.innerWidth;
+            let scale = 1;
+
+            if (width >= 992 && width <= 1600) {
+                scale = 0.9;
+            } else if (width >= 700 && width <= 767) {
+                scale = 0.8;
+            } else if (width >= 600 && width < 700) {
+                scale = 0.75;
+            } else if (width <= 600) {
+                scale = 0.5;
+            }
+
+            document.body.style.transform = `scale(${scale})`;
+            document.body.style.transformOrigin = 'top left';
+        }
+
+        window.addEventListener('resize', adjustPageScale);
+        window.addEventListener('DOMContentLoaded', adjustPageScale);
+    </script>
+
+</body>
+</html>
